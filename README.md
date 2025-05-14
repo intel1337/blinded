@@ -1,7 +1,7 @@
 # Blinded
 
 
-### Blinded is a web 
+### Blinded is a web game / app based on a blind test.
 
 
 # Next Config :
