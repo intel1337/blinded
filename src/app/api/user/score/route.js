@@ -1,3 +1,4 @@
+'use server'
 import { NextResponse } from "next/server"
 import prisma from "../../lib/prisma/prisma"
 
@@ -45,10 +46,8 @@ export async function POST(req) {
                 });
                 return NextResponse.json({ "response": "Saved Best score " })
             }
-            
+
             else {
-
-
                 return NextResponse.json({ "response": "Not your highest score" })
             }
 
@@ -58,6 +57,5 @@ export async function POST(req) {
     catch (err) {
         console.error(err)
         return NextResponse.json({ "response": "Internal Error, try again later" })
-
     }
 }

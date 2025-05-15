@@ -9,9 +9,10 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  username String
-  score    Int
+  id          Int           @id @default(autoincrement())
+  username    String
+  score       Int
+  Leaderboard Leaderboard[]
 }
 
 model Song {
@@ -21,4 +22,10 @@ model Song {
   image   String
   genre   String
   preview String
+}
+
+model Leaderboard {
+  id     Int  @id @default(autoincrement())
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
 }
