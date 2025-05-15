@@ -34,6 +34,7 @@ export async function POST(req) {
                         score: score
                     },
                 });
+                return NextResponse.json({"response":"Saved Best score "})
             }
             else{
                 return NextResponse.json({"response":"Not your highest score"})
