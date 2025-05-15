@@ -2,11 +2,16 @@ import { NextResponse } from "next/server"
 import prisma from "../../lib/prisma/prisma"
 
 
+
 export async function POST(req) {
-    const data = req.json()
+    const data = await req.json()
     const username = data.username
     console.log(data)
-    const score = data.score
+    let score = data.score
+    if (typeof score !== "number") {
+        score = parseInt(score)
+        console.log(score)
+    }
     try {
         if (!username || !data.score) {
             return NextResponse.json({ "response": "Missing Username" })
@@ -16,6 +21,10 @@ export async function POST(req) {
                 username: username,
             },
         });
+        console.log(existingUser)
+        console.log(existingUser[0].score)
+
+
 
         if (!existingUser) {
             const user = await prisma.user.create({
@@ -24,34 +33,31 @@ export async function POST(req) {
                     score: score,
                 },
             })
-            return NextResponse.json({"response":"Successefuly saved user"})
+            return NextResponse.json({ "response": "Successefuly saved user" })
         }
         else {
-            if (existingUser.score <= score) {
-                await prisma.user.update({
+            if (existingUser[0].score <= score) {
+                await prisma.user.updateMany({
                     where: { username: username },
                     data: {
                         score: score
                     },
                 });
-                return NextResponse.json({"response":"Saved Best score "})
+                return NextResponse.json({ "response": "Saved Best score " })
             }
-            else{
-                return NextResponse.json({"response":"Not your highest score"})
+            
+            else {
+
+
+                return NextResponse.json({ "response": "Not your highest score" })
             }
 
         }
 
-
-
-
-
-
-
     }
-    catch(err) {
+    catch (err) {
         console.error(err)
-        return NextResponse.json({"response": "Internal Error, try again later"})
+        return NextResponse.json({ "response": "Internal Error, try again later" })
 
     }
 }
