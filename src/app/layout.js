@@ -1,6 +1,7 @@
 
 import "./globals.css";
 import Header from "../components/Header";
+import "../components/Header.module.css"
 import ThemeProvider from "../components/ThemeProvider";
 
 
