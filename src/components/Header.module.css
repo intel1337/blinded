@@ -1,0 +1,101 @@
+
+
+.container {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    box-sizing: border-box;
+    background-color: var(--dark-color);
+    padding: 0 4rem;
+    margin-bottom: 1rem;
+    color: white;
+    color: var(--light-color);
+    animation: neon 5s ease-in-out infinite alternate;
+
+    div {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        width: fit-content;
+        img {
+            height: var(--icon-size);
+            width: var(--icon-size);
+        }
+        h1 {
+            font-size: var(--icon-size);
+            font-weight: 900;
+            margin: calc(var(--icon-size) / 3);
+            animation: neonText 5s ease-in-out infinite alternate;
+        }
+    }
+
+    svg {
+        height: var(--icon-size);
+        width: var(--icon-size);
+        margin: 0;
+        color: white;
+        background-color: var(--dark-color);
+        border-radius: 100%;
+        border: 0.2rem solid var(--dark-color);
+        transition: all 200ms;
+        &:hover {
+            cursor: pointer;
+            transform: rotate(180deg);
+            transition: all 200ms;
+        }
+    }
+}
+
+svg.light {
+    border: 0.2rem solid var(--light-color);
+    color: rgb(183, 24, 167);
+    background-color: var(--light-color);
+}
+
+@keyframes neon {
+    0% {
+        box-shadow: 0 0 0.5rem var(--primary-color);;
+    }
+    45% {
+        box-shadow: 0 0 1rem var(--primary-color);;
+    }
+    47% {
+        box-shadow: 0 0 0 var(--primary-color);;
+    }
+    49% {
+        box-shadow: 0 0 1rem var(--primary-color);;
+    }
+    51% {
+        box-shadow: 0 0 0 var(--primary-color);;
+    }
+    53% {
+        box-shadow: 0 0 1rem var(--primary-color);;
+    }
+    100% {
+        box-shadow: 0 0 1rem var(--primary-color);;
+    }
+  }
+  @keyframes neonText {
+    0% {
+        text-shadow: 0 0 0.2rem var(--primary-color);;
+    }
+    45% {
+        text-shadow: 0 0 0.5rem var(--primary-color);;
+    }
+    47% {
+        text-shadow: 0 0 0.2rem var(--primary-color);;
+    }
+    49% {
+        text-shadow: 0 0 0.5rem var(--primary-color);;
+    }
+    51% {
+        text-shadow: 0 0 0.2rem var(--primary-color);;
+    }
+    43% {
+        text-shadow: 0 0 0.5rem var(--primary-color);;
+    }
+    100% {
+        text-shadow: 0 0 0.5rem var(--primary-color);;
+    }
+  }

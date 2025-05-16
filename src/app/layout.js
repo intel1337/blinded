@@ -1,7 +1,7 @@
 
 import "./globals.css";
-import Header from "./components/Header";
-
+import Header from "../components/Header";
+import ThemeProvider from "../components/ThemeProvider";
 
 
 export const metadata = {
@@ -11,10 +11,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="fr" suppressHydrationWarning>
       <body>
-        <Header></Header>
-        {children}
+        {/* <ThemeProvider> */}
+          <Header>
+          </Header>
+          {children}
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
